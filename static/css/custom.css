@@ -1,0 +1,44 @@
+/* My custom CSS additions in this theme :) */
+
+.homepage h1.support-headline {
+  text-align: center;
+  font-size: 3em !important;
+}
+@media (max-width: 52em) {
+  .homepage h1.support-headline {
+    font-size: 2em !important;
+  }
+
+  /* Break headline words on small devices */
+  article.single h1.headline {
+    word-wrap: break-word;
+  }
+}
+
+a {
+  color: var(--base0d);
+}
+
+/* Social media links */
+footer a.social {
+  color: var(--base0c);
+  text-decoration: underline;
+}
+
+/* Custom scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--base07);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--base03);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--base04);
+}

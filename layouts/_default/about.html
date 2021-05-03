@@ -1,0 +1,19 @@
+{{ $page := .Page }} {{ partial "header.html" . }}
+
+<main role="main" class="homepage article">
+  <article class="single">
+    <h1 class="site-title" itemprop="title">
+      {{ if eq .Title "About me" }}
+      <span class="base09">A</span><span class="base0a">b</span
+      ><span class="base0b">o</span><span class="base0c">u</span
+      ><span class="base0d">t</span><span> </span><span class="base0e">M</span
+      ><span class="base0f">e</span>
+      {{ else }}
+        <h1 class="site-title">{{ .Title }}</h1>
+      {{ end }}
+    </h1>
+    <section class="body" itemprop="articleBody">{{ .Content }}</section>
+  </article>
+</main>
+
+{{ partial "footer.html" . }}

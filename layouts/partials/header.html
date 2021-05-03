@@ -2,6 +2,8 @@
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
 <head>
 <meta charset="utf-8">
+<!-- Preload stuff -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css" as="style">
 <meta name="description" content="{{ if eq .Description "" }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
 {{- with $.Param "keywords" }}
 <meta name="keywords" content="{{ delimit . "," }}">
@@ -11,10 +13,14 @@
 {{- end }}
 {{ hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{{ "/img/favicon.ico" | relURL }}" type="image/x-icon">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css" type="text/css">
 <link rel="alternate" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
-<title>{{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }}</title>
+<script src="{{ "service-worker.js" | relURL }}"></script>
+<title> {{ if eq .Title .Site.Title }} {{ .Site.Title }} {{else}} {{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }} {{ end }}</title>
 </head>
 <body>
 
@@ -23,9 +29,10 @@
     <a class="path" href="{{ .Site.BaseURL }}">[{{ .Site.Title }}]</a>
     <span class="caret"># _</span>
     <div class="right">
-      {{ range $i, $page := (where .Site.Pages "Section" "pages") }}
+      {{ $currentPage := . }}
+      {{ range $i, $item := .Site.Menus.main }}
         {{ if not (eq $i 0) }}|{{ end }}
-        <a class="path" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+        <a class="path" href="{{ $item.URL }}">{{ $item.Name }}</a>
       {{ end }}
     </div>
   </div>

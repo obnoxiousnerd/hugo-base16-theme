@@ -2,9 +2,16 @@
 
 <footer>
   <div class="container">
-    <span class="copyright">&copy; {{ .Site.LastChange.Year }} {{ .Site.Title }} - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+    <p style="font-size: 1.2em;">[Social Media Links]</p>
+    {{ range $i, $item := .Site.Menus.social }}
+    {{ if not (eq $i 0) }}|{{ end }}
+    <a class="social" href="{{ $item.URL }}">{{ $item.Name }}</a>
+    {{ end }}
+    <br />
+    <br />
+    <span class="copyright">&copy; {{ .Site.LastChange.Year }} {{ .Site.Title }}</span>
   </div>
 </footer>
-
+<script defer async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 </body>
 </html>
