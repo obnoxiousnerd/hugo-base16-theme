@@ -42,3 +42,22 @@ footer a.social {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--base04);
 }
+
+/* Make Codepen resizable */
+.cp_embed_wrapper {
+  /* required for resize to work */
+  overflow: hidden;
+
+  /* make resizeble! */
+  resize: both;
+
+  /* required to see the handle */
+  background: white;
+  padding-bottom: 10px;
+
+  /* default height */
+  height: 400px;
+}
+.cp_embed_wrapper iframe {
+  height: 100% !important;
+}
