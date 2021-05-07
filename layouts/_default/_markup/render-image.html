@@ -1,5 +1,9 @@
 {{- if strings.HasPrefix .Destination "http" -}}
-  <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+  <a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer">
+    <img class="zoomable" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
+  </a>
 {{- else -}}
-  <img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} {{ with imageConfig ( printf "static/%s" .Destination ) }} width={{ .Width }} height="{{ .Height }}" {{ end }} />
+  <a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer">
+    <img class="zoomable" loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} {{ with imageConfig ( printf "static/%s" .Destination ) }} width={{ .Width }} height="{{ .Height }}" {{ end }} />
+  </a>
 {{- end -}}
