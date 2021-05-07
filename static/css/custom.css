@@ -61,3 +61,17 @@ footer a.social {
 .cp_embed_wrapper iframe {
   height: 100% !important;
 }
+
+/* Break <code> tags to avoid horizontal scrolling */
+code {
+  word-wrap: break-word;
+}
+
+/* Maintain aspect ratio of <img> */
+img {
+  object-fit: contain;
+}
+
+img.zoomable {
+  cursor: pointer;
+}
