@@ -19,6 +19,11 @@
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css" type="text/css">
 <link rel="alternate" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
+{{ range $i, $item := .Site.Menus.social }}
+  {{ if eq $item.Name "GitHub" }}
+    <link rel="me" href="{{ $item.URL }}">
+  {{ end }}
+{{ end }}
 <script src="{{ "service-worker.js" | relURL }}"></script>
 <title> {{ if eq .Title .Site.Title }} {{ .Site.Title }} {{else}} {{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }} {{ end }}</title>
 </head>
