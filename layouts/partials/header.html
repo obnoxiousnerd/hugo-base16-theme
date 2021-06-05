@@ -19,6 +19,10 @@
 <link rel="stylesheet" href="{{ "css/custom.css" | relURL }}" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css" type="text/css">
 <link rel="alternate" href="{{ "index.xml" | relURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
+{{ with .Site.Params.Webmention  }}
+<link rel="webmention" href="{{ .Webmention }}" />
+<link rel="pingback" href="{{ .Pingback }}" />
+{{ end }}
 {{ range $i, $item := .Site.Menus.social }}
   {{ if eq $item.Name "GitHub" }}
     <link rel="me" href="{{ $item.URL }}">
