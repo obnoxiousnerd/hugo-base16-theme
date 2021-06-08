@@ -28,7 +28,7 @@
     <link rel="me" href="{{ $item.URL }}">
   {{ end }}
 {{ end }}
-{{ if .Site.Params.GoogleAnalytics }}
+{{ if .Site.GoogleAnalytics }}
 {{ template "_internal/google_analytics.html" . }}
 {{ end }}
 <script src="{{ "service-worker.js" | relURL }}"></script>
