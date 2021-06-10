@@ -29,7 +29,18 @@
   {{ end }}
 {{ end }}
 
-{{ template "_internal/google_analytics.html" . }}
+{{ if ne .Site.GoogleAnalytics "" }} 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5J2KVJ1DF8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5J2KVJ1DF8');
+</script>
+{{ end }}
+
 <script src="{{ "service-worker.js" | relURL }}"></script>
 <title> {{ if eq .Title .Site.Title }} {{ .Site.Title }} {{else}} {{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }} {{ end }}</title>
 </head>
